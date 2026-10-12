@@ -1,0 +1,114 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.LeptonXLiteTheme": {
+      "version": "5.6.1",
+      "isInstalled": true,
+      "creationTime": "10/12/2026 03:00:14 +00:00"
+    },
+    "Volo.Abp.Account": {
+      "version": "10.6.1",
+      "isInstalled": true,
+      "creationTime": "10/12/2026 03:00:14 +00:00"
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "10.6.1",
+      "isInstalled": true,
+      "creationTime": "10/12/2026 03:00:14 +00:00"
+    },
+    "Volo.Abp.Identity": {
+      "version": "10.6.1",
+      "isInstalled": true,
+      "creationTime": "10/12/2026 03:00:14 +00:00"
+    },
+    "Volo.Abp.TenantManagement": {
+      "version": "10.6.1",
+      "isInstalled": true,
+      "creationTime": "10/12/2026 03:00:14 +00:00"
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "10.6.1",
+      "isInstalled": true,
+      "creationTime": "10/12/2026 03:00:14 +00:00"
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "10.6.1",
+      "isInstalled": true,
+      "creationTime": "10/12/2026 03:00:14 +00:00"
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "10.6.1",
+      "isInstalled": true,
+      "creationTime": "10/12/2026 03:00:14 +00:00"
+    },
+    "Volo.Abp.BlobStoring.Database": {
+      "version": "10.6.1",
+      "isInstalled": true,
+      "creationTime": "10/12/2026 03:00:14 +00:00"
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "PayFlow.Application": {
+      "path": "src/PayFlow.Application/PayFlow.Application.abppkg",
+      "folder": "src"
+    },
+    "PayFlow.Application.Tests": {
+      "path": "test/PayFlow.Application.Tests/PayFlow.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "PayFlow.Domain.Shared": {
+      "path": "src/PayFlow.Domain.Shared/PayFlow.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "PayFlow.Application.Contracts": {
+      "path": "src/PayFlow.Application.Contracts/PayFlow.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "PayFlow.HttpApi": {
+      "path": "src/PayFlow.HttpApi/PayFlow.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "PayFlow.HttpApi.Client": {
+      "path": "src/PayFlow.HttpApi.Client/PayFlow.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "PayFlow.EntityFrameworkCore.Tests": {
+      "path": "test/PayFlow.EntityFrameworkCore.Tests/PayFlow.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "PayFlow.EntityFrameworkCore": {
+      "path": "src/PayFlow.EntityFrameworkCore/PayFlow.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "PayFlow.TestBase": {
+      "path": "test/PayFlow.TestBase/PayFlow.TestBase.abppkg",
+      "folder": "test"
+    },
+    "PayFlow.Domain.Tests": {
+      "path": "test/PayFlow.Domain.Tests/PayFlow.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "PayFlow.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/PayFlow.HttpApi.Client.ConsoleTestApp/PayFlow.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "PayFlow.DbMigrator": {
+      "path": "src/PayFlow.DbMigrator/PayFlow.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "PayFlow.HttpApi.Host": {
+      "path": "src/PayFlow.HttpApi.Host/PayFlow.HttpApi.Host.abppkg",
+      "folder": "src"
+    },
+    "PayFlow.Domain": {
+      "path": "src/PayFlow.Domain/PayFlow.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<Solution>
+    <Configurations>
+        <Platform Name="Any CPU" />
+    </Configurations>
+    <Folder Name="/src/">
+        <Project Path="src/PayFlow.Domain/PayFlow.Domain.csproj" />
+        <Project Path="src/PayFlow.Application/PayFlow.Application.csproj" />
+        <Project Path="src/PayFlow.EntityFrameworkCore/PayFlow.EntityFrameworkCore.csproj" />
+        <Project Path="src/PayFlow.Domain.Shared/PayFlow.Domain.Shared.csproj" />
+        <Project Path="src/PayFlow.Application.Contracts/PayFlow.Application.Contracts.csproj" />
+        <Project Path="src/PayFlow.HttpApi/PayFlow.HttpApi.csproj" />
+        <Project Path="src/PayFlow.HttpApi.Client/PayFlow.HttpApi.Client.csproj" />
+        <Project Path="src/PayFlow.HttpApi.Host/PayFlow.HttpApi.Host.csproj" />
+        <Project Path="src/PayFlow.DbMigrator/PayFlow.DbMigrator.csproj" />
+    </Folder>
+    <Folder Name="/test/">
+        <Project Path="test/PayFlow.Application.Tests/PayFlow.Application.Tests.csproj" />
+        <Project Path="test/PayFlow.EntityFrameworkCore.Tests/PayFlow.EntityFrameworkCore.Tests.csproj" />
+        <Project Path="test/PayFlow.TestBase/PayFlow.TestBase.csproj" />
+        <Project Path="test/PayFlow.Domain.Tests/PayFlow.Domain.Tests.csproj" />
+        <Project Path="test/PayFlow.HttpApi.Client.ConsoleTestApp/PayFlow.HttpApi.Client.ConsoleTestApp.csproj" />
+    </Folder>
+</Solution>
