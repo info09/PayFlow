@@ -281,3 +281,7 @@ src/PayFlow.Blazor.Server.Tiered/Logs/*
 # IdentityServer temp files
 tempkey.rsa
 tempkey.jwk
+
+# Environment files
+.env
+.env.*

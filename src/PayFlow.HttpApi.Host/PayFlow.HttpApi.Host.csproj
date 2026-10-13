@@ -8,6 +8,7 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <RootNamespace>PayFlow</RootNamespace>
     <PreserveCompilationReferences>true</PreserveCompilationReferences>
+    <PublishIISAssets>false</PublishIISAssets>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'PayFlow.HttpApi.Host' " />

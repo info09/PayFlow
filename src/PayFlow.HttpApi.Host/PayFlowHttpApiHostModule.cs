@@ -103,7 +103,7 @@ public class PayFlowHttpApiHostModule : AbpModule
             {
                 options.DisableTransportSecurityRequirement = true;
             });
-            
+
             Configure<ForwardedHeadersOptions>(options =>
             {
                 options.ForwardedHeaders = ForwardedHeaders.XForwardedProto;
@@ -193,13 +193,32 @@ public class PayFlowHttpApiHostModule : AbpModule
 
         if (hostingEnvironment.IsDevelopment())
         {
-            Configure<AbpVirtualFileSystemOptions>(options =>
+            var domainSharedPath = Path.Combine(hostingEnvironment.ContentRootPath, "..", "PayFlow.Domain.Shared");
+            var domainPath = Path.Combine(hostingEnvironment.ContentRootPath, "..", "PayFlow.Domain");
+            var applicationContractsPath = Path.Combine(hostingEnvironment.ContentRootPath, "..", "PayFlow.Application.Contracts");
+            var applicationPath = Path.Combine(hostingEnvironment.ContentRootPath, "..", "PayFlow.Application");
+
+            // Only replace embedded resources by physical files if the directories exist.
+            // This allows the app to run in Docker where source directories may not be available.
+            if (Directory.Exists(domainSharedPath))
             {
-                options.FileSets.ReplaceEmbeddedByPhysical<PayFlowDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}PayFlow.Domain.Shared"));
-                options.FileSets.ReplaceEmbeddedByPhysical<PayFlowDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}PayFlow.Domain"));
-                options.FileSets.ReplaceEmbeddedByPhysical<PayFlowApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}PayFlow.Application.Contracts"));
-                options.FileSets.ReplaceEmbeddedByPhysical<PayFlowApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}PayFlow.Application"));
-            });
+                Configure<AbpVirtualFileSystemOptions>(options => options.FileSets.ReplaceEmbeddedByPhysical<PayFlowDomainSharedModule>(domainSharedPath));
+            }
+
+            if (Directory.Exists(domainPath))
+            {
+                Configure<AbpVirtualFileSystemOptions>(options => options.FileSets.ReplaceEmbeddedByPhysical<PayFlowDomainModule>(domainPath));
+            }
+
+            if (Directory.Exists(applicationContractsPath))
+            {
+                Configure<AbpVirtualFileSystemOptions>(options => options.FileSets.ReplaceEmbeddedByPhysical<PayFlowApplicationContractsModule>(applicationContractsPath));
+            }
+
+            if (Directory.Exists(applicationPath))
+            {
+                Configure<AbpVirtualFileSystemOptions>(options => options.FileSets.ReplaceEmbeddedByPhysical<PayFlowApplicationModule>(applicationPath));
+            }
         }
     }
 

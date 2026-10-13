@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-payflow}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+      POSTGRES_DB: ${POSTGRES_DB:-payflow}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    entrypoint: ["dotnet", "host/PayFlow.HttpApi.Host.dll"]
+    ports:
+      - "5000:5000"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Default=Host=db;Port=5432;Database=${POSTGRES_DB:-payflow};Username=${POSTGRES_USER:-payflow};Password=${POSTGRES_PASSWORD:-changeme}
+      - AuthServer__Authority=http://localhost:5000
+      - App__HealthCheckUrl=/health-status
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db_data:

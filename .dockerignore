@@ -1,0 +1,15 @@
+**/bin/
+**/obj/
+**/Logs/
+**/wwwroot/libs/
+node_modules/
+.vs/
+.vscode/
+*.suo
+*.user
+.XmlDocs{justification}
+.git
+.gitignore
+.env
+.env.*
+! .env.example

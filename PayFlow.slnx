@@ -1,4 +1,25 @@
 <Solution>
+    <Folder Name="/SolutionItems/" />
+    <Folder Name="/SolutionItems/docs/">
+        <File Path="docs/architecture.md" />
+        <File Path="docs/conventions.md" />
+        <File Path="docs/decisions.md" />
+        <File Path="docs/deploy.md" />
+        <File Path="docs/domain-glossary.md" />
+        <File Path="docs/prd.md" />
+        <File Path="docs/status.md" />
+        <File Path="docs/ux.md" />
+    </Folder>
+    <Folder Name="/SolutionItems/docs/stories/">
+        <File Path="docs/stories/phase0.md" />
+        <File Path="docs/stories/phase1.md" />
+        <File Path="docs/stories/phase2.md" />
+        <File Path="docs/stories/phase3.md" />
+        <File Path="docs/stories/phase4.md" />
+        <File Path="docs/stories/phase5.md" />
+        <File Path="docs/stories/phase6.md" />
+        <File Path="docs/stories/phase7.md" />
+    </Folder>
     <Folder Name="/src/" />
     <Folder Name="/src/application/">
         <Project Path="src/PayFlow.Application.Contracts/PayFlow.Application.Contracts.csproj" />
@@ -19,9 +40,9 @@
     </Folder>
     <Folder Name="/test/">
         <Project Path="test/PayFlow.Application.Tests/PayFlow.Application.Tests.csproj" />
-        <Project Path="test/PayFlow.EntityFrameworkCore.Tests/PayFlow.EntityFrameworkCore.Tests.csproj" />
-        <Project Path="test/PayFlow.TestBase/PayFlow.TestBase.csproj" />
         <Project Path="test/PayFlow.Domain.Tests/PayFlow.Domain.Tests.csproj" />
+        <Project Path="test/PayFlow.EntityFrameworkCore.Tests/PayFlow.EntityFrameworkCore.Tests.csproj" />
         <Project Path="test/PayFlow.HttpApi.Client.ConsoleTestApp/PayFlow.HttpApi.Client.ConsoleTestApp.csproj" />
+        <Project Path="test/PayFlow.TestBase/PayFlow.TestBase.csproj" />
     </Folder>
 </Solution>

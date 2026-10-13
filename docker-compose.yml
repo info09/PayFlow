@@ -1,0 +1,54 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-payflow}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+      POSTGRES_DB: ${POSTGRES_DB:-payflow}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-payflow} -d ${POSTGRES_DB:-payflow}"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build:
+      context: src/PayFlow.HttpApi.Host
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://0.0.0.0:80
+      DOTNET_ENVIRONMENT: Development
+      App__SelfUrl: http://localhost:5000
+      AuthServer__Authority: http://localhost:5000
+      ConnectionStrings__Default: Host=db;Port=5432;Database=${POSTGRES_DB:-payflow};Username=${POSTGRES_USER:-payflow};Password=${POSTGRES_PASSWORD:-changeme}
+      App__HealthCheckUrl: /health-status
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:80/health-status || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 45s
+
+  migrator:
+    build:
+      context: src/PayFlow.DbMigrator
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__Default: Host=db;Port=5432;Database=${POSTGRES_DB:-payflow};Username=${POSTGRES_USER:-payflow};Password=${POSTGRES_PASSWORD:-changeme}
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db_data:
