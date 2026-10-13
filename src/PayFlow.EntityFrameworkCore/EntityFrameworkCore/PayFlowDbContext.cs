@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
-using PayFlow.Authors;
-using PayFlow.Books;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.BlobStoring.Database.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -28,10 +26,6 @@ public class PayFlowDbContext :
     IIdentityDbContext
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
-
-    public DbSet<Author> Authors { get; set; }
-
-    public DbSet<Book> Books { get; set; }
 
     #region Entities from the modules
 
@@ -83,24 +77,6 @@ public class PayFlowDbContext :
         builder.ConfigureOpenIddict();
         builder.ConfigureTenantManagement();
         builder.ConfigureBlobStoring();
-
-        builder.Entity<Author>(b =>
-        {
-            b.ToTable(PayFlowConsts.DbTablePrefix + "Authors",
-                PayFlowConsts.DbSchema);
-            b.ConfigureByConvention(); //auto configure for the base class props
-            b.Property(x => x.Name).IsRequired().HasMaxLength(AuthorConsts.MaxNameLength);
-            b.Property(x => x.ShortBio).HasMaxLength(AuthorConsts.MaxShortBioLength);
-        });
-
-        builder.Entity<Book>(b =>
-        {
-            b.ToTable(PayFlowConsts.DbTablePrefix + "Books",
-                PayFlowConsts.DbSchema);
-            b.ConfigureByConvention(); //auto configure for the base class props
-            b.Property(x => x.Name).IsRequired().HasMaxLength(128);
-            b.HasOne<Author>().WithMany().HasForeignKey(x => x.AuthorId).IsRequired();
-        });
 
         /* Configure your own tables/entities inside here */
 
