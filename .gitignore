@@ -285,3 +285,5 @@ tempkey.jwk
 # Environment files
 .env
 .env.*
+!important: .env.example is tracked
+!.env.example
