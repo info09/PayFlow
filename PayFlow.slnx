@@ -1,5 +1,6 @@
 <Solution>
     <Folder Name="/SolutionItems/" />
+    <Folder Name="/SolutionItems/Docker/" />
     <Folder Name="/SolutionItems/docs/">
         <File Path="docs/architecture.md" />
         <File Path="docs/conventions.md" />

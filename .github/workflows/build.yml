@@ -35,7 +35,7 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Install Angular dependencies
-        run: cd angular && npm ci
+        run: cd angular && npm ci --legacy-peer-deps
 
       - name: Build Angular application
         run: cd angular && ng build --configuration production
