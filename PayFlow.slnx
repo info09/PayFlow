@@ -1,6 +1,9 @@
 <Solution>
     <Folder Name="/SolutionItems/" />
-    <Folder Name="/SolutionItems/Docker/" />
+    <Folder Name="/SolutionItems/Docker/">
+        <File Path="docker-compose-debug.yml" />
+        <File Path="docker-compose.yml" />
+    </Folder>
     <Folder Name="/SolutionItems/docs/">
         <File Path="docs/architecture.md" />
         <File Path="docs/conventions.md" />

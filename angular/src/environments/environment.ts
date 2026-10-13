@@ -3,7 +3,7 @@ import { Environment } from '@abp/ng.core';
 const baseUrl = 'http://localhost:4200';
 
 const oAuthConfig = {
-  issuer: 'https://localhost:44301/',
+  issuer: 'https://localhost:5001/',
   redirectUri: baseUrl,
   clientId: 'PayFlow_App',
   responseType: 'code',
@@ -20,7 +20,7 @@ export const environment = {
   oAuthConfig,
   apis: {
     default: {
-      url: 'https://localhost:44301',
+      url: 'https://localhost:5001',
       rootNamespace: 'PayFlow',
     },
     AbpAccountPublic: {
