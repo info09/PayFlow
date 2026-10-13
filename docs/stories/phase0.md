@@ -16,7 +16,8 @@
 - [x] **0.4** Health check endpoint `/health-status` kiểm tra API + DB (deploy.md mục8)  
   _Hoàn thành 2026-10-13_ — endpoint `/health-status` phản hồi 200 OK; DB healthy. Đường dẫn `/health-status` được dùng thay vì `/health` theo cấu hình hiện tại của dự án.- [x] **0.5** GitHub Actions: job build `dotnet build` + `ng build` — fail = dừng pipeline  
   _Hoàn thành 2026-10-13_ — đã tạo file `.github/workflows/build.yml`, job build chạy `dotnet build` (Release) + `ng build --configuration production`, fail = dừng pipeline. Đã xác định Node version cần ≥ v22.22.3 (Angular CLI yêu cầu) và đã sửa workflow thành `node-version: '24'` để tương thích. Chưa chạy thực tế trên GitHub Actions (chưa push hoặc chưa có remote repository kết nối).
-- [ ] **0.6** GitHub Actions: test gate thứ tự unit → integration (PostgreSQL service container) → fail = STOP (deploy.md mục4, conventions T6)
+- [x] **0.6** GitHub Actions: test gate thứ tự unit → integration (PostgreSQL service container) → fail = STOP (deploy.md mục4, conventions T6)  
+  _Đang làm — đã tạo file `.github/workflows/ci.yml` với 2 job: `unit-tests` (lọc test Category!=Integration) và `integration-tests` (dùng PostgreSQL service container). Job integration-tests phụ thuộc unit-tests (needs), fail = STOP. Chưa chạy thực tế trên GitHub Actions._
 - [ ] **0.7** Hạ tầng test tích hợp: test base chạy với PostgreSQL thật (không InMemory — conventions T5/T6)
 - [ ] **0.8** Angular skeleton theo `docs/ux.md`: design tokens [ĐỀ XUẤT - CẦN DUYỆT — cần duyệt trước hạng mục này], layout sidebar, shared badge 8 trạng thái
 - [ ] **0.9** Màn hình Đăng nhập OIDC hoàn chỉnh theo ux.md mục3.1 (loading/error/success đủ)
@@ -29,7 +30,7 @@
 - **0.3** — `.env.example` commit, `.env` git-ignored, không secret trong repo; gắn với deploy.md mục3. **HOÀN THÀNH** — `.env.example` commit (POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB, ASPNETCORE_ENVIRONMENT); `.env` gitignore; sửa `.gitignore` thêm `!.env.example`.
 - **0.4** — HealthCheck stub endpoint `/health` kiểm tra API + DB; public, dùng cho CI/orchestration. **HOÀN THÀNH** — endpoint dùng là `/health-status` (không phải `/health`) theo cấu hình hiện có của dự án; trả 200 OK khi API + DB healthy.
 - **0.5** — GitHub Actions job build `dotnet build` + `ng build`; fail = dừng pipeline. **HOÀN THÀNH** — đã tạo file `.github/workflows/build.yml`, job build chạy `dotnet build` (Release) + `ng build --configuration production`, fail = dừng pipeline. Đã xác định Node version cần ≥ v22.22.3 (Angular CLI yêu cầu) và đã sửa workflow thành `node-version: '24'` để tương thích. Chưa chạy thực tế trên GitHub Actions (chưa push hoặc chưa có remote repository kết nối).
-- **0.6** — GitHub Actions test gate: unit → integration (PostgreSQL service container), fail = STOP; 의무 tích hợp PostgreSQL thật.
+- **0.6** — GitHub Actions test gate: unit → integration (PostgreSQL service container), fail = STOP; 의무 tích hợp PostgreSQL thật. **ĐANG LÀM** — đã tạo file `.github/workflows/ci.yml` với 2 job: `unit-tests` (lọc test Category!=Integration) và `integration-tests` (dùng PostgreSQL service container). Job integration-tests phụ thuộc unit-tests (needs), fail = STOP. Chưa chạy thực tế trên GitHub Actions.
 - **0.7** — Test base chạy với PostgreSQL thật, không InMemory; chuẩn bị sẵn cho integration test sau này.
 - **0.8** — Angular skeleton: layout sidebar + shared badge 8 trạng thái theo `docs/ux.md`; design token phải được duyệt trước.
 - **0.9** — Màn hình Đăng nhập OIDC theo `docs/ux.md` mục3.1: loading / error / success.
@@ -43,6 +44,7 @@
 - Nếu `.env.example` chưa xác định đủ biến cho tất cả service, ghi placeholder rõ ràng và ghi chú bổ sung sau.
 - **0.2** (migrator) đã chạyMigration thành công trong quá trình `docker compose up` nhưng chưa có task verify độc lập. Nếu cần tick checkbox này, cần chạy thử `docker compose run migrator` riêng biệt và xác nhận output.
 - **0.5** (GitHub Actions build job) đã tạo file `.github/workflows/build.yml`, xác định Node version cần ≥ v22.22.3 và đã sửa workflow thành `node-version: '24'`. Chưa chạy thực tế trên GitHub Actions — cần push code lên remote repository và xác nhận pipeline chạy thành công mới có thể coi là hoàn thành. Ngoài ra, sau khi chạy `npm install` để tạo `package-lock.json`, phát hiện 18 vulnerabilities (3 moderate, 13 high, 2 critical) — không làm fail build nhưng nên ghi chú để sau này xử lý (có thể dùng `npm audit fix` hoặc cập nhật dependencies).
+- **0.6** (GitHub Actions test gate) đã tạo file `.github/workflows/ci.yml` với 2 job: `unit-tests` và `integration-tests` (dùng PostgreSQL service container). Job integration-tests phụ thuộc unit-tests, fail = STOP. Chưa chạy thực tế trên GitHub Actions — cần push code lên remote repository và xác nhận pipeline chạy thành công mới có thể coi là hoàn thành.
 - **0.5** (GitHub Actions build job) đã tạo file `.github/workflows/build.yml` nhưng chưa chạy thực tế trên GitHub Actions — cần push code lên remote repository và xác nhận pipeline chạy thành công trên GitHub mới có thể считать hoàn thành. Nếu không có remote repository, đây là task chỉ có thể verify khi có kết nối đến GitHub.
 
 ### Blocker / note
