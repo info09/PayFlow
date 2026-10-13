@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-
 :root {
   --lpx-theme-light-bg: url('assets/images/login/login-bg-img-light.svg');
   --lpx-theme-dim-bg: url('assets/images/login/login-bg-img-dim.svg');
@@ -37,4 +36,30 @@
     height: 20px;
     background-image: url('assets/images/getting-started/x.svg');
   }
+}
+
+// PayFlow Design Tokens
+@import '../src/assets/css/design-tokens.scss';
+
+// Global styles
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--pf-bg);
+  color: var(--pf-text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+// Convenient utilities
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+// Focus styles
+*:focus-visible {
+  outline: 2px solid var(--pf-primary);
+  outline-offset: 2px;
 }

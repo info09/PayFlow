@@ -1,0 +1,25 @@
+// Design tokens — PayFlow
+// Baseline theo docs/ux.md mục 4.1 (chưa duyệt — [ĐỀ XUẤT - CẦN DUYỆT])
+
+:root {
+  --pf-primary: #1E4FA3;
+  --pf-primary-hover: #163C7D;
+  --pf-secondary: #5E6C84;
+  --pf-bg: #F5F7FA;
+  --pf-surface: #FFFFFF;
+  --pf-border: #D8DCE3;
+  --pf-text: #172B4D;
+  --pf-text-secondary: #5E6C84;
+  --pf-success: #2E7D32;
+  --pf-warning: #B26A00;
+  --pf-error: #C62828;
+  --pf-info: #1565C0;
+  --pf-badge-draft: var(--pf-secondary);
+  --pf-badge-pending-approval: var(--pf-info);
+  --pf-badge-approved: #4527A0;
+  --pf-badge-processing: var(--pf-warning);
+  --pf-badge-completed: var(--pf-success);
+  --pf-badge-failed: var(--pf-error);
+  --pf-badge-unknown: #8D6E00;
+  --pf-badge-cancelled: var(--pf-secondary);
+}

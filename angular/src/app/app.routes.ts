@@ -1,35 +1,14 @@
-import { authGuard, permissionGuard } from '@abp/ng.core';
 import { Routes } from '@angular/router';
-export const APP_ROUTES: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    loadComponent: () => import('./home/home.component').then(c => c.HomeComponent),
-  },
-  {
-    path: 'account',
-    loadChildren: () => import('@abp/ng.account').then(c => c.createRoutes()),
-  },
-  {
-    path: 'identity',
-    loadChildren: () => import('@abp/ng.identity').then(c => c.createRoutes()),
-  },
-  {
-    path: 'tenant-management',
-    loadChildren: () => import('@abp/ng.tenant-management').then(c => c.createRoutes()),
-  },
-  {
-    path: 'setting-management',
-    loadChildren: () => import('@abp/ng.setting-management').then(c => c.createRoutes()),
-  },
-  {
-    path: 'books',
-    loadComponent: () => import('./book/book.component').then(c => c.BookComponent),
-    canActivate: [authGuard, permissionGuard],
-  },
-  {
-    path: 'authors',
-    loadComponent: () => import('./author/author.component').then(c => c.AuthorComponent),
-    canActivate: [authGuard, permissionGuard],
-  },
+
+export const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', loadComponent: () => import('./home/home.component').then(m => m.HomeComponent) },
+  { path: 'payment-requests', loadComponent: () => import('./book/payment-requests/payment-request-list.component').then(m => m.PaymentRequestListComponent) },
+  { path: 'approvals', loadComponent: () => import('./book/approvals/approval-list.component').then(m => m.ApprovalListComponent) },
+  { path: 'payment-orders', loadComponent: () => import('./book/payment-orders/payment-order-list.component').then(m => m.PaymentOrderListComponent) },
+  { path: 'reconciliation', loadComponent: () => import('./book/reconciliation/reconciliation.component').then(m => m.ReconciliationComponent) },
+  { path: 'config', loadChildren: () => import('./config/config.routes').then(m => m.CONFIG_ROUTES) },
+  { path: 'organization', loadComponent: () => import('./config/organization.component').then(m => m.OrganizationComponent) },
+  { path: 'audit-logs', loadComponent: () => import('./config/audit-logs.component').then(m => m.AuditLogsComponent) },
+  { path: '**', redirectTo: 'home' }
 ];
