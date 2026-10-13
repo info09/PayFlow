@@ -22,10 +22,10 @@ Thứ tự ưu tiên nền tảng trước: môi trường/CI-CD → tenancy/ph�
 
 **Liên quan:** NFR-06, FR-30, SM-06 (một phần).
 
-- [ ] Docker Compose local đầy đủ: `api` (stub HealthCheck) + `db` (PostgreSQL) + `migrator` — `docker compose up` chạy được
+- [x] (2026-10-13) Docker Compose local đầy đủ: `api` (stub HealthCheck) + `db` (PostgreSQL) + `migrator` — `docker compose up` chạy được
 - [ ] `PayFlow.DbMigrator` kết nối DB thành công, chạy migration khống ban đầu
 - [ ] Biến môi trường: `.env.example` commit, `.env` git-ignored, không secret trong repo (deploy.md mục3)
-- [ ] Health check endpoint `/health` kiểm tra API + DB (deploy.md mục8)
+- [x] (2026-10-13) Health check endpoint `/health-status` kiểm tra API + DB (deploy.md mục8) — API trả 200 OK, DB healthy; endpoint `/health-status` được dùng thay vì `/health` theo cấu hình hiện có
 - [ ] GitHub Actions: job build `dotnet build` + `ng build` — fail = dừng pipeline
 - [ ] GitHub Actions: test gate thứ tự unit → integration (PostgreSQL service container) → fail = STOP (deploy.md mục4, conventions T6)
 - [ ] Hạ tầng test tích hợp: test base chạy với PostgreSQL thật (không InMemory — conventions T5/T6)
@@ -165,11 +165,11 @@ Thứ tự ưu tiên nền tảng trước: môi trường/CI-CD → tenancy/ph�
 
 | Hạng mục | Giá trị |
 |---|---|
-| **Phase đang làm** | **Phase 0 — chưa bắt đầu hạng mục nào** |
-| **Hạng mục đang làm** | — |
+| **Phase đang làm** | Phase 0 — có hạng mục đầu tiên hoàn thành |
+| **Hạng mục đã hoàn thành** | Docker Compose local (api + db + migrator), Health check endpoint `/health-status` |
 | **Docs chain** | Đủ7/7 file (prd, domain-glossary, architecture, ux, deploy, conventions, status); glossary DEC-001→005 đã backfill |
-| **Code nghiệp vụ** | Chưa có module nào được implement (repo đang là ABP template gốc) |
-| **Lần cập nhật cuối** | 2026-10-12 (tạo file) |
+| **Code nghiệp vụ** | Chưa có module nghiệp vụ nào; infrastructure Docker đã xong (dự án ABP template gốc ban đầu) |
+| **Lần cập nhật cuối** | 2026-10-13 (Phase 0: Docker Compose + Health check checkbox tick) |
 
 Agent mở conversation mới: **bắt đầu từ checkbox `- [ ]` đầu tiên của Phase 0**, đọc file liên quan (deploy.md cho hạ tầng, conventions.md trước khi code).
 
