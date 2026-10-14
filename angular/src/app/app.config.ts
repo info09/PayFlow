@@ -27,7 +27,7 @@ export const appConfig: ApplicationConfig = {
     provideAbpCore(
       withOptions({
         environment,
-        registerLocaleFn: registerLocaleForEsBuild({ locale: 'en' }),
+        registerLocaleFn: registerLocaleForEsBuild({}),
       }),
     ),
     provideAbpOAuth(),
